@@ -61,6 +61,45 @@ print('list.reverse()', list)
 ### 用列表实现堆栈
 # 列表方法使得将列表作为栈来使用非常容易，最后添加的元素会最先被取出（“后时先出”）。
 # 要将一个条目添加到栈顶，可使用 append()。 要从栈顶取出一个条目，则使用 pop() 而不必显式指定索引。
+stack = [3, 4, 5]
+stack.append(6)
+stack.append(7)
+print('stack', stack)
+stack.pop()
+print('stack.pop()', stack)
+stack.pop()
+print('stack.pop()', stack)
 
+
+### 用列表实现队列
+# 列表也可以用作队列，最先加入的元素，最先取出（“先进先出”）；
+# 然而，列表作为队列的效率很低。因为，在列表末尾添加和删除元素非常快，但在列表开头插入或移除元素却很慢（因为所有其他元素都必须移动一位）。
+# 实现队列最好用 collections.deque，可以快速从两端添加或删除元素。
+from collections import deque
+queue = deque(["Eric", 'John', 'Michael'])
+queue.append("James")
+queue.append("Sarah")
+print("queue", queue)
+queue.popleft()
+print("queue", queue)
+queue.pop()
+print("queue", queue)
+
+
+### 列表推导式
+# 列表推导式创建列表的方式更简洁。常见的用法为，对序列或可迭代对象中的每个元素应用某种操作，用生成的结果创建新的列表；或用满足特定条件的元素创建子序列。
+squares = []
+for x in range(10):
+    squares.append(x**2)
+
+print("squares", squares)
+# 注意，这段代码创建（或覆盖）变量 x，该变量在循环结束后仍然存在
+
+# 下述方法可以无副作用地计算平方列表：
+# squares = list(map(lambda x: x**2, range(10)))
+# print("squares", squares)
+
+squares = [x**2 for x in range(10)]
+print("squares", squares)
 
 
